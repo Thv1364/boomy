@@ -69,9 +69,8 @@ function patrol()
 //this next event will flip direction if the enemy collides something
 add()
 {
-    this.onCollide(obj, col) => 
-{
-  if (col.isLeft()||col.isRight())
+    this.onCollide(obj, col) => {
+  if (col.isLeft()||col.isRight()//)
     {
 this.dir = -this.dir;
     }  
@@ -88,7 +87,7 @@ body(),
 patrol()//use patrol function we just defined
 "enemy"
 
-])
+]);
 
 
 
@@ -108,6 +107,32 @@ patrol()//use patrol function we just defined
             player.jump(650);
         }
     });
+
+    player.onCollide("enemy", (enemy, col) =>
+{
+if(col.isBottom){
+    destroy(enemy);
+    player.jump(300);
+}
+else 
+{
+    destroy(player);
+    go("lose");
+}
+});
+});
+
+//collision detection
+
+
+
+//game over scene
+scene("lose", ()=>{
+add([
+text("Game Over"),
+pos(center()),
+anchor("center"),
+])
 });
 
 // Start the game
