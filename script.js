@@ -65,26 +65,33 @@ function patrol()
         update()
         {
             this.move(60 * this.dir, 0);
-
         },
 //this next event will flip direction if the enemy collides something
 add()
-{this.onCollide(obj, col) => 
+{
+    this.onCollide(obj, col) => 
 {
   if (col.isLeft()||col.isRight())
     {
 this.dir = -this.dir;
-
-
     }  
+});
+},
+    };
 }
+//add enemy to scene
+const enemy=add([
+sprite("enemy"),
+pos(600,200),
+area(),
+body(),
+patrol()//use patrol function we just defined
+"enemy"
+
+])
 
 
-}
 
-    }
-
-}
 
 
     // --- Player Controls & Interactions ---
